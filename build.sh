@@ -146,11 +146,11 @@ sayAndDo mkdir -p $BUILDNAME
 
 if [ "$COMPONENT" == "all" ] || [ "$COMPONENT" == "libcoredumper" ]; then
 	echo "# libcoredumper - building Debian package and installing as dependency"
-	sayAndDo cd libcoredumper
-	sayAndDo ./build.sh
-	sayAndDo mv libcoredumper* ../$BUILDNAME
-	sayAndDo cd ..
-	sayAndDo sudo dpkg -i $BUILDNAME/libcoredumper*.deb
+	sayAndDo wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-coredumper/libcoredumper-dev_1.2.1-1_i386.deb
+	sayAndDo dpkg -i libcoredumper-dev_1.2.1-1_i386.deb
+	sayAndDo wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-coredumper/libcoredumper1_1.2.1-1_i386.deb
+	sayAndDo dpkg -i libcoredumper1_1.2.1-1_i386.deb
+	sayAndDo rm libcoredumper1_1.2.1-1_i386.deb libcoredumper-dev_1.2.1-1_i386.deb
 	echo "# - done"
 	echo
 fi
